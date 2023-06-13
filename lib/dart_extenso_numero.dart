@@ -1,14 +1,17 @@
 library numero_extenso;
 
+import 'package:flutter/foundation.dart';
+
 import 'dart_remover_acentos.dart';
 
-class ConverterExtenso {
-  static String limparString(String str) {
+@protected
+class ExtensoParaNumero {
+  static String _stringLimpar(String str) {
     str = RemoverAcentos.remover(str);
     return str.replaceAll(RegExp(r'[.,!?\;\|\{\}\[\]]'), '');
   }
 
-  static bool hasDigits(String text) {
+  static bool _temDigitos(String text) {
     return text.contains(RegExp(r'\d'));
   }
 
@@ -68,27 +71,26 @@ class ConverterExtenso {
     final RegExp regexValor = RegExp(r'[\d,.]+');
     final RegExp regexNotacao = RegExp(r'[a-z]');
 
-    final palavras = limparString(numeroExtenso);
+    final palavras = _stringLimpar(numeroExtenso);
     var numero = 0.0;
     var valor = 0.0;
     var valorStr = '';
-    final bool hasDigitsInPalavras = hasDigits(palavras);
+
+    final bool hasDigitsInPalavras = _temDigitos(palavras);
     if (hasDigitsInPalavras) {
       var notacaoCientifica = '';
 
       final String? valorMatch = regexValor.firstMatch(palavras)?.group(0);
 
       if (valorMatch != null) {
-        valorStr = valorMatch.replaceAll(',', '.');
-        print(valorStr); // Output: 1.000.50
+        valorStr = valorMatch.replaceAll(',', '.'); // Output: 1.000.50
       }
 
       final notacaoCientificaMatch =
           regexNotacao.firstMatch(palavras)?.group(0);
 
       if (notacaoCientificaMatch != null) {
-        notacaoCientifica = notacaoCientificaMatch;
-        print(notacaoCientifica); // Output: a
+        notacaoCientifica = notacaoCientificaMatch; // Output: a
       }
 
       final multiplicador = multiplicadores[notacaoCientifica] ?? 1;
