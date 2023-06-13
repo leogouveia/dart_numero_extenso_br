@@ -1,3 +1,6 @@
+import 'package:flutter/foundation.dart';
+
+@protected
 class RemoverAcentos {
   static final defaultDiacriticsRemovalap = [
     {
