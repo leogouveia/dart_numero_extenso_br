@@ -1,0 +1,38 @@
+{
+	"name": "Dart (Community)",
+	"build": {
+		"dockerfile": "Dockerfile",
+		// Update VERSION to pick a Dart version
+		"args": {
+			"VERSION": "stable"
+		}
+	},
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dart-code.dart-code"
+			]
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"username": "automatic",
+			"userUid": "automatic",
+			"userGid": "automatic",
+			"installZsh": true,
+			"installOhMyZsh": true,
+			"upgradePackages": true,
+			"nonFreePackages": true,
+			"configureZshAsDefaultShell": true
+		}
+	}
+}
