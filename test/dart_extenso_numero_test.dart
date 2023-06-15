@@ -9,7 +9,7 @@ void main() {
     expect(ExtensoParaNumero.converter('vinte mil e dois'), 20002);
     expect(ExtensoParaNumero.converter('vinte mil e duzentos'), 20200);
     expect(
-        ExtensoParaNumero.converter('vinte mil quinhentos e setenta'), 20570,);
+        ExtensoParaNumero.converter('vinte mil quinhentos e setenta'), 20570);
     expect(ExtensoParaNumero.converter('quinhentos mil'), 500000);
     expect(ExtensoParaNumero.converter('quinze milhões'), 15000000);
     expect(
